@@ -6,7 +6,7 @@ int main(int argc, char** argv) {
 
   a = 5;
   b = 6;
-  printf("la division de %d / %d es %f\n",a,b,(fioat)divi(a,b));
+  printf("la division de %d / %d es %f\n",a,b,(float)divi(a,b));
 
 }
 
