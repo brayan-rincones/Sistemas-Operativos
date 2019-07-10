@@ -22,10 +22,31 @@ Rta/. Se puede retrasar el proceso del padre empleado el uso de la funcion `slee
 
 [p4.c](p4.c)
 
-Rta/. Todas las funciones reciben como primer argumento la ruta absoluta del archivo a ejecutar, sin embargo, la diferencia esta en los demás argumentos:
+Rta/. Todas las funciones reciben como primer argumento la ruta absoluta del archivo a ejecutar, sin embargo, la diferencia y variacion de este tipo de llamada esta en los demás argumentos:
 
 -En unas cada uno de los siguientes argumentos (a partir del segundo) es una opción o parámetro que recibe el archivo ejecutable para su funcionamiento, si lo requiere, y el último argumento es NULL.
 -En las demás el segundo argumento es un arreglo de caracteres, donde cada elemento del arreglo es una opción o parámetro que el archivo ejecutable requiere para funcionar, si lo requiere, y el último elemento es NULL.
+
+5. Ahora escriba un programa que use wait () para esperar a que el proceso hijo finalice en el padre. ¿Qué espera wait()? ¿Qué pasa si usas wait() en el niño?
+
+[p5.c](p5.c)
+
+Rta/. En el programa, cuando se llama a wait espera a que otro proceso finalice su ejecucion antes. Si este es empleado en el proceso hijo, ocurre que la salida es -1, pues no hay un proceso existente antes que el de niño, es decir, por ende no hay un proceso a la espera para que se termine y sea emitida la señal; por lo que esta salida es representada como un error.
+
+6. Escriba una ligera modificación del programa anterior, esta vez utilizando waitpid () en lugar de wait (). ¿Cuándo sería útil waitpid ()?
+
+[p6.c](p6.c)
+
+Rta/. `waitpid` seria util cuando se requiera un uso selectivo de procesos hijo para suspender la ejecucion hasta que el proceso especificado por el argumento `pid` cambie de estado. Sin embargo, `waitpid` espera sólo por la muerte de los hijos, pero este comportamiento es modificable mediante el parámetro `options`. 
+
+
+7. Escriba un programa que cree un proceso secundario y, a continuación, cierre la salida estándar (STDOUT FILENO). ¿Qué sucede si el hijo llama a printf () para imprimir algunos resultados después de cerrar el descriptor?
+
+[p7.c](p7.c)
+
+Rta/. Cuando el hijo llama a `close(STDOUT_FILENO)` ocurre que las siguientes instrucciones de `printf` no se realicen. No lanza un error por existir la instruccion de impresion, sino que simplemente no la ejecuta y procede a seguir las siguientes instrucciones.
+
+
 
 
 
