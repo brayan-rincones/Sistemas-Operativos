@@ -13,7 +13,7 @@ int main(int argc, char** argv){
   int x1, y1;
   x1 = 4;
   y1 = 6;
-  printf("suma: %d)\n", suma(&x1,y1));
+  printf("suma: %d)\n", suma(&x1,y1)); //se debe recibir el valor de puntero *x con &x1, pues el valor de x es un puntero de tipo entero
  // printf("A: %d\n",a);
   return 0;
 }
